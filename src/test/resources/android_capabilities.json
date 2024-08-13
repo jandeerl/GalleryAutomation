@@ -1,0 +1,6 @@
+{
+  "platformName": "android",
+  "automationName": "uiautomator2",
+  "appPackage": "com.google.android.apps.photos",
+  "appActivity":".home.HomeActivity"
+}
