@@ -1,3 +1,5 @@
+package utils;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
@@ -17,7 +19,7 @@ public class DriverProvider {
         return objectMapper.readValue(is, UiAutomator2Options.class);
     }
 
-    static AndroidDriver provideDriver() throws IOException {
+    public static AndroidDriver provideDriver() throws IOException {
         return new AndroidDriver(
                 new URL("http://127.0.0.1:4723"),
                 loadCapabilities("src/test/resources/android_capabilities.json")
