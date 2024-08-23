@@ -4,6 +4,14 @@ This is an example project demonstrating test automation on Photos app on Pixel 
 
 The entire project is written in Java 21, based on Appium 2 & UIAutomator2.
 
+### Sample photos
+
+To populate the Photos app, sample photos need to be available on device. As part of the setup for PopulatedHomePageTest,
+photos are taken from the device's camera.
+
+<img src="populatedHomepageTest.gif" alt ="PopulatedHomePageTest being run">
+
+
 ### Shell commands usage
 
 Due to the app relying on files being present on device, adb commands need to be enabled
@@ -38,11 +46,3 @@ public void cleanPicturesFolder(){
         refreshMediaStore();
     }
 ```
-
-### Sample photos
-
-To populate the Photos app, sample photos need to be available on device. As part of the setup for PopulatedHomePageTest,
-photos are taken from the device's camera.
-
-<img src="populatedHomepageTest.gif" alt ="PopulatedHomePageTest being run">
-
