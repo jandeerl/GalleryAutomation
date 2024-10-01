@@ -4,9 +4,11 @@ This is an example project demonstrating test automation on Photos app on Pixel 
 
 The entire project is written in Java 21, based on Appium 2 & UIAutomator2.
 
+Page Object Model is used to represent the different screens in the application.
+
 ### Sample photos
 
-To populate the Photos app, sample photos need to be available on device. As part of the setup for PopulatedHomePageTest,
+To populate the Photos app, sample photos need to be available on device. As part of the setup for ```PopulatedHomePageTest```,
 photos are taken from the device's camera.
 
 <img src="populatedHomepageTest.gif" alt ="PopulatedHomePageTest being run">
@@ -27,7 +29,7 @@ to allow refreshing the MediaStore, i.e.:
                         )));
     }
 ```
-Similarly, files are deleted in the @BeforeEach method, to ensure any existing photos (from previous tests etc.) do not interfere with what images are 
+Similarly, files are deleted in the ```@BeforeEach``` method, to ensure any existing photos (from previous tests etc.) do not interfere with what images are 
 displayed in the gallery.
 ```java
 //DeviceStorageManager.java
@@ -45,4 +47,21 @@ public void cleanPicturesFolder(){
         }
         refreshMediaStore();
     }
+```
+
+### Appium configuration
+The Appium capabilities are written in  ```android_capabilities.json``` and set through ```DriverProvider```. By inheriting from ```BasePage```, all tests automatically instantiate the driver with the required settings, avoiding redundant configuration in individual tests.
+
+```java
+//BaseTest.java
+
+public class BaseTest {
+    AndroidDriver driver;
+
+    @BeforeEach
+    public void setUp() throws IOException {
+        driver = DriverProvider.provideDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+    }
+}
 ```
